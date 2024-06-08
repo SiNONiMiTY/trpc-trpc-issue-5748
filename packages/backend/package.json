@@ -1,0 +1,58 @@
+{
+    "name": "@trpc-subscription/backend",
+    "version": "0.0.1",
+    "author": "SiNONiMiTY",
+    "description": "tRPC Subscription Backend Component",
+    "type": "module",
+    "private": true,
+    "license": "ISC",
+    "engines": {
+        "node": ">=18.20.3",
+        "pnpm": ">=8.15.6"
+    },
+    "scripts": {
+        "dev": "nodemon --watch .env --watch ./src/ --ignore ./dist/ --ext ts --exec \"pnpm build && node -r dotenv-expand/config dist/fastify/index.js\"",
+        "build": "tsc --project ./tsconfig.build.json",
+        "test:unit": "vitest --run unit",
+        "test:int": "vitest --run integration",
+        "db:migrate": "tsx -r dotenv-expand/config src/database/drizzle/migrate.ts",
+        "db:reset": "tsx -r dotenv-expand/config src/database/drizzle/reset.ts",
+        "db:seed": "tsx -r dotenv-expand/config src/database/drizzle/seed.ts"
+    },
+    "dependencies": {
+        "@fastify/websocket": "^10.0.1",
+        "@trpc/client": "11.0.0-rc.382",
+        "@trpc/server": "11.0.0-rc.382",
+        "dayjs": "^1.11.11",
+        "dotenv": "^16.4.5",
+        "dotenv-expand": "^11.0.6",
+        "drizzle-orm": "^0.31.2",
+        "fastify": "^4.27.0",
+        "ioredis": "^5.4.1",
+        "lucia": "^3.2.0",
+        "nanoid": "^5.0.7",
+        "oslo": "^1.2.0",
+        "pino": "^9.1.0",
+        "postgres": "^3.4.4",
+        "superjson": "^2.2.1",
+        "zod": "^3.23.8"
+    },
+    "devDependencies": {
+        "@types/node": "^20.14.2",
+        "@types/ws": "^8.5.10",
+        "@vitest/ui": "^1.6.0",
+        "drizzle-kit": "^0.22.5",
+        "nodemon": "^3.1.3",
+        "pino-pretty": "^11.1.0",
+        "tsx": "^4.13.3",
+        "typescript": "^5.4.5",
+        "vite": "^5.2.13",
+        "vitest": "^1.6.0"
+    },
+    "exports": {
+        "./trpc/v1/router": {
+            "default": "./dist/trpc/v1/router/_index.js",
+            "types": "./dist/trpc/v1/router/_index.d.ts"
+        }
+    }
+}

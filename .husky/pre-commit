@@ -1,0 +1,29 @@
+#!/usr/bin/env bash
+
+echo
+echo ==============================
+echo = BEGIN: git pre-commit hook =
+echo ==============================
+echo
+
+# Exit & do not commit changes when there are problems detected
+set -e
+
+stagedFiles=$( git diff --name-only --diff-filter=d --staged )
+
+# Use ESLint to do syntax checking of staged files
+echo 'Linting code with ESLint...'
+echo $stagedFiles | xargs pnpm eslint --no-warn-ignored --no-error-on-unmatched-pattern
+echo
+
+# Use prettier to format code style of staged files
+echo 'Formatting staged files with Prettier...'
+echo $stagedFiles | xargs pnpm prettier --write --ignore-unknown --no-error-on-unmatched-pattern
+echo $stagedFiles | xargs git add
+echo
+
+echo
+echo ============================
+echo = END: git pre-commit hook =
+echo ============================
+echo

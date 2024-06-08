@@ -1,0 +1,59 @@
+{
+    "name": "trpc-subscription",
+    "version": "0.0.1",
+    "author": "SiNONiMiTY",
+    "description": "tRPC Subscription Mobile/Web Application",
+    "type": "module",
+    "private": true,
+    "license": "ISC",
+    "engines": {
+        "node": ">=18.20.3",
+        "pnpm": ">=8.15.6"
+    },
+    "scripts": {
+        "dev": "pnpm --recursive --stream dev",
+        "build": "pnpm --recursive --stream build",
+        "format": "prettier --write .",
+        "lint": "eslint ."
+    },
+    "devDependencies": {
+        "@changesets/cli": "^2.27.5",
+        "@typescript-eslint/eslint-plugin": "^7.12.0",
+        "@typescript-eslint/parser": "^7.12.0",
+        "eslint": "^9.4.0",
+        "eslint-plugin-svelte": "^2.39.0",
+        "husky": "^9.0.11",
+        "prettier": "3.3.1",
+        "prettier-plugin-multiline-arrays": "^3.0.6",
+        "prettier-plugin-svelte": "^3.2.4",
+        "prettier-plugin-tailwindcss": "^0.6.2",
+        "svelte-eslint-parser": "^0.36.0",
+        "typescript": "^5.4.5"
+    },
+    "pnpm": {
+        "allowedDeprecatedVersions": {
+            "rimraf": "*"
+        },
+        "overrides": {
+            "@node-rs/argon2": "^1.8.3",
+            "@node-rs/bcrypt": "^1.10.4",
+            "dotenv": "^16.4.5",
+            "esbuild": "^0.21.4",
+            "glob": "^10.4.1",
+            "oslo": "^1.2.0",
+            "semver": "^7.6.2",
+            "tslib": "^2.6.3",
+            "type-fest": "^4.19.0",
+            "yaml": "^2.4.3"
+        },
+        "peerDependencyRules": {
+            "allowedVersions": {
+                "eslint": "^9.3.0",
+                "postcss-load-config": "^6.0.1"
+            },
+            "ignoreMissing": [
+                "@types/node"
+            ]
+        }
+    }
+}
